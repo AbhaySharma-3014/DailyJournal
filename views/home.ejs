@@ -1,0 +1,33 @@
+<%- include("partials/header") -%>
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
+  </style>
+
+  <h1 class="Welcome">Welcome To Daily Journal</h1>
+  <p> <%= startingContent %></p>
+
+  <a href="/compose">
+      <button type="button" class="btn">Click To add a Post</button>
+  </a>
+
+  <% postArray.forEach(function(post){ %>
+     <h1 class ="blogTitle"> <%= post.title   %> </h1>
+     <p class="blogContent">
+        <%= post.content.substring(0,100) + "  ...    " %>
+        <a href="/posts/<%=post._id%>">
+          <button type="button" class="secbtn">Read More</button>
+        </a>
+
+        <a href="/del/<%=post._id%>">
+          <button type="button" class="secbtn">Delete</button>
+        </a>
+
+     </p>
+
+  <% });                               %>
+
+<%- include("partials/footer") -%>
